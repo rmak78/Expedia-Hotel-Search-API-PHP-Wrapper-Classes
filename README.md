@@ -1,4 +1,7 @@
-expedia-hotel-search-wordpress-plugin
+Expedia-Hotel-Search-PHP-Wrapper-Classes
+
 =====================================
 
-Hotel Search Plugin for wordpress to find and list hotels based on certain criteria. will use php, jquery, ajax bootstrap and ofcourse expedia API
+I got a project that need to use Expedia Wrapper for PHP. I think Github is best place to do that.
+
+Eventually, I would like to create a wordpress plugin out of it. but at the moment. Its good to have a class and few functions that can be re-used.
