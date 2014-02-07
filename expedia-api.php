@@ -379,7 +379,48 @@ class API extends Expedia
 
         return $result;
     }
+    public function getHotelListRaw($params)
+    {
+        $result = array();
 
+        try {
+            $hotels = $this->list($params);
+			
+            if ($hotels != null && isset($hotels['HotelList'])) {
+                $this->_totalHotels = $hotels['HotelList']['@activePropertyCount'];
+            }
+
+            while ($hotels != null) {
+                if (isset($hotels['HotelList'])) {
+                     
+                        $result =  $hotels['HotelList'] ;
+                
+                }
+
+                if (!$hotels['moreResultsAvailable']) {
+                    break;
+                }
+
+                if (isset($params['numberOfResults']) && count($result) <= intval($params['numberOfResults'])) {
+                    break;
+                }
+
+                $hotels = $this->list(array(
+                    'cacheKey' => $hotels['cacheKey'],
+                    'cacheLocation' => $hotels['cacheLocation']
+                ));
+            }
+        } catch (Exceptions $ex) {
+            $data = $ex->getData();
+            if ($data['category'] != 'RESULT_NULL') {
+                throw new Exceptions($data);
+            }
+        }
+
+        $this->_availableHotels = $hotels['HotelList']['@size'];
+
+        return $result;
+    }
     public function getHotelList($params)
     {
         $result = array();

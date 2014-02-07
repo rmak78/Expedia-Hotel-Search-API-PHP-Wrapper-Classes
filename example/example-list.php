@@ -1,9 +1,16 @@
 <?php
-require_once("api-config.php");
-require_once("expedia-api.php");
+// add config file to set API keys and other variables
+require_once("../api-config.php");
+// add API Class container
+require_once("../expedia-api.php");
+
+// Start session
 session_start();
 
+// initiate the API object
 $myapi = new API( $customer_id , $api_public_key );
+
+// set some basics parameters
 $myapi->set_customer_session_id( session_id() );
 $myapi->set_customer_ip_address($_SERVER['REMOTE_ADDR']);
 $myapi->set_customer_user_agent($_SERVER['HTTP_USER_AGENT']);
