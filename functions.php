@@ -156,6 +156,7 @@ stateProvinceCode 	string 	yes for US,CA, AU
 Two character code for the state/province containing the specified city.
 References:  US State Codes, Canadian Province/Territory Codes, Australian Province/Territory Codes
 ----------------------------------------------------------------------------------*/
+$stateProvinceCode = 'IL';
 if(isset( $_POST['stateProvinceCode'])) {
 
 $stateProvinceCode = $_POST['stateProvinceCode'];
@@ -169,6 +170,7 @@ countryCode 	string 	yes
 ------------------------------------------------------
 Two character ISO-3166 code for the country containing the specified city. Use only country codes designated as "officially assigned" in the ISO-3166 decoding table.
 ----------------------------------------------------------------------------------*/	
+$countryCode = 'US';
 if(isset( $_POST['countryCode'])) {
 
 $countryCode = $_POST['countryCode'];

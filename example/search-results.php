@@ -1,5 +1,15 @@
 ﻿<?php
 require_once("../functions.php");
+
+ $hotels = $myapi->getHotelList(array(
+  'destinationString' =>  $destinationString ,
+  'stateProvinceCode' => $stateProvinceCode,
+  'countryCode' => $countryCode,
+ 
+ 
+));
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -109,7 +119,11 @@ require_once("../functions.php");
         
         <div class="span6">
             <h2 class="pull-left">Available Hotels
-                <small>XXXX results</small>
+                <small><?php
+
+echo $myapi->getTotalHotels() ;
+
+?></small>
             </h2>
         </div>
         
@@ -165,26 +179,61 @@ require_once("../functions.php");
 </select>
         </div>
     </div>
-    
-    <!-- Results -->
+ <?php
 
-        <!-- Result -->      
-        <div class="hotel well" id="124266" style="background-color: white">
+foreach($hotels  as $key => $value) {  
+
+$hotelId = $value['hotelId'];
+$name = $value['name'];
+$address1 = $value['address1'];
+$city = $value['city'];
+$stateProvinceCode = $value['stateProvinceCode'];
+$postalCode = $value['postalCode'];
+$countryCode = $value['countryCode'];
+$airportCode = $value['airportCode'];
+$supplierType = $value['supplierType'];
+$propertyCategory = $value['propertyCategory'];
+$hotelRating = $value['hotelRating'];
+$confidenceRating = $value['confidenceRating'];
+$amenityMask = $value['amenityMask'];
+$tripAdvisorRating = $value['tripAdvisorRating'];
+$tripAdvisorReviewCount = $value['tripAdvisorReviewCount'];
+$tripAdvisorRatingUrl = $value['tripAdvisorRatingUrl'];
+$locationDescription = $value['locationDescription'];
+$shortDescription = $value['shortDescription'];
+$highRate = $value['highRate'];
+$lowRate = $value['lowRate'];
+$rateCurrencyCode = $value['rateCurrencyCode'];
+$latitude = $value['latitude'];
+$longitude = $value['longitude'];
+$proximityDistance = $value['proximityDistance'];
+$proximityUnit = $value['proximityUnit'];
+$hotelInDestination = $value['hotelInDestination'];
+$thumbNailUrl = 'http://images.travelnow.com'.$value['thumbNailUrl'];
+$deepLink = $value['deepLink']; 
+
+
+
+
+?>  
+
+<!-- Result -->      
+        <div class="hotel well" id="<?php echo  $hotelId ; ?>" style="background-color: white">
             
-            <input data-val="true" data-val-number="The field HotelId must be a number." data-val-required="The HotelId field is required." id="hotel_HotelId" name="hotel.HotelId" type="hidden" value="124266" />
-            <input data-val="true" data-val-number="The field Latitude must be a number." data-val-required="The Latitude field is required." id="hotel_Latitude" name="hotel.Latitude" type="hidden" value="41.8693" />
-            <input data-val="true" data-val-number="The field Longitude must be a number." data-val-required="The Longitude field is required." id="hotel_Longitude" name="hotel.Longitude" type="hidden" value="-87.62448" />
+            <input data-val="true" data-val-number="The field HotelId must be a number." data-val-required="The HotelId field is required." id="hotel_HotelId" name="hotel.HotelId" type="hidden" value="<?php echo  $hotelId ; ?>" />
+            <input data-val="true" data-val-number="The field Latitude must be a number." data-val-required="The Latitude field is required." id="hotel_Latitude" name="hotel.Latitude" type="hidden" value="<?php echo  $latitude ; ?>" />
+            <input data-val="true" data-val-number="The field Longitude must be a number." data-val-required="The Longitude field is required." id="hotel_Longitude" name="hotel.Longitude" type="hidden" value="<?php echo  $longitude; ?>" />
             <input id="Session_DestinationId_" name="Session[DestinationId]" type="hidden" value="" />
 
             <!-- Hotel Name and expedia star rating -->
             <div class="row-fluid">
                 <div class="span6">
-                    <span title="124266"><b>Best Western Grant Park</b></span>
-                    <div class="rateit" data-rateit-value="2.5" data-rateit-min="0" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                    <span title="<?php echo  $hotelId ; ?>"><b><?php echo  $name ; ?></b></span>
+                    <div class="rateit" data-rateit-value="<?php echo  $hotelRating ; ?>" data-rateit-min="0" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
                 </div>
                 <div class="span6">
                     <h3 class="pull-right" style="margin-top: -10px; margin-bottom: -25px;">
-                        <small>Averaging </small><span>&#163;</span>49.01<small> / night </small>
+                        <small>Averaging </small><span><small><?php echo  $rateCurrencyCode ; ?></small></span><?php echo  round(($highRate+$lowRate)/2,2)   ; ?><small> / night </small>
                     </h3>
                 </div>
             </div>
@@ -195,9 +244,9 @@ require_once("../functions.php");
                 
                 <!-- Thumbnail -->
                 <div class="span1">
-                    <img class="img-rounded" width="150" height="150" alt="Hotel Thumbnail" src="http://images.travelnow.com//hotels/1000000/30000/23100/23023/23023_69_t.jpg" title="124266" />
+                    <img class="img-rounded" width="150" height="150" alt="Hotel Thumbnail" src="<?php echo  $thumbNailUrl ; ?>" title="<?php echo  $hotelId ; ?>" />
                     <p>
-                        <a class="hide" href="http://travel.ian.com/index.jsp?pageName=hotAvail&amp;amp;cid=55505&amp;amp;hotelID=124266&amp;amp;mode=2&amp;amp;numberOfRooms=4&amp;amp;room-0-adult-total=2&amp;amp;room-0-child-total=1&amp;amp;room-0-child-0-age=9&amp;amp;room-1-adult-total=2&amp;amp;room-1-child-total=0&amp;amp;room-2-adult-total=2&amp;amp;room-2-child-total=0&amp;amp;room-3-adult-total=2&amp;amp;room-3-child-total=0&amp;amp;arrivalMonth=1&amp;amp;arrivalDay=8&amp;amp;departureMonth=1&amp;amp;departureDay=14&amp;amp;showInfo=true&amp;amp;locale=en_GB&amp;amp;currencyCode=GBP">Deep Link</a>
+                        <a class="hide" href="<?php echo $deepLink; ?>">Deep Link</a>
                     </p>
                 </div>
                 
@@ -207,12 +256,12 @@ require_once("../functions.php");
                         <i class="icon-home"></i> Address
                     </span>
                     <span class="label label-info" title="Nearest Airport (IATA Code)">
-                        <i class="icon-plane"></i> ORD
+                        <i class="icon-plane"></i><?php echo $airportCode; ?>
                     </span>
                     <address>
-1100 S Michigan Ave<br />
-                                                Chicago<br />
-                        60605<br />
+<?php echo $address1; ?><br />
+                                                <?php echo $city; ?><br />
+                        <?php echo $postalCode; ?><br />
                     </address>
                 </div>
                 
@@ -223,7 +272,12 @@ require_once("../functions.php");
                     </span>
                    
                     
-<p>Property Location With a stay at Best Western Grant Park in Chicago (The Loop - Downtown), you'll be minutes from Film Row Cinema and close to Art Institute of Chicago. This</p>
+<p><?php 
+//remove extra tags
+$shortDescription = str_replace("<p><b>Property Location</b> <br />","",$shortDescription);
+echo $shortDescription; 
+
+?></p>
 
                 </div>
   
@@ -232,7 +286,7 @@ require_once("../functions.php");
                     <p>
 
 
-                        <img title="41.8693,-87.62448" src="http://maps.googleapis.com/maps/api/staticmap?center=41.8693,-87.62448&amp;zoom=15&amp;size=150x150&amp;sensor=false&amp;key=AIzaSyDm7lXUQTaEvPo-eghcFIo2VjJvyKawKUo&amp;markers=size%3asmall%7ccolor%3ablue%7c41.8693%2c-87.62448" alt="Google Map" class="img-rounded" height="150" width="150" />
+                        <img title="<?php echo  $latitude ; ?>,<?php echo  $longitude; ?>" src="http://maps.googleapis.com/maps/api/staticmap?center=<?php echo  $latitude ; ?>,<?php echo  $longitude; ?>&amp;zoom=15&amp;size=150x150&amp;sensor=false&amp;key=AIzaSyDm7lXUQTaEvPo-eghcFIo2VjJvyKawKUo&amp;markers=size%3asmall%7ccolor%3ablue%<?php echo  $latitude ; ?>%2c<?php echo  $longitude; ?>" alt="Google Map" class="img-rounded" height="150" width="150" />
                         <br />
                     </p>
                 </div> 
@@ -290,9 +344,13 @@ require_once("../functions.php");
                 </div>   
             </div>
         </div>
-        <!-- Result -->    
+<!-- Result -->    
+<?php
 
-    <!-- End Hotel Results -->
+ }
+
+?>
+<!-- End Hotel Results -->
     
 
 

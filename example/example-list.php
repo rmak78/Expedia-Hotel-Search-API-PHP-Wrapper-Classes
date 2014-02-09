@@ -19,15 +19,15 @@ $myapi->set_minor_rev($minor_rev);
 $myapi->set_locale($locale);
 
 // Check what are payment options
-
+/* 
 $payment_options = $myapi->getPaymentOptions($currency_code, $locale);
  
  var_export(  $payment_options );
-
+ */
 
 // get hotels list for specified destination
 $hotels = $myapi->getHotelList(array(
-  'city' => 'chicago',
+  'destinationString' => 'chicago',
   'arrivalDate' => '10/10/2014',
   'departureDate' => '10/11/2014',
   'numberOfResults' => 5,
@@ -42,18 +42,28 @@ $hotels = $myapi->getHotelList(array(
  echo $myapi->getAvailableHotels();
  
  
-
- var_export( $hotels);
-
-
+ foreach($hotels  as $key => $value) {
  
+ echo $value['hotelId'];
+ echo '</br>';
+ 
+ 
+ }
+ 
+ 
+ 
+ echo '<pre>';
+ var_export( $hotels);
+ echo '</pre>';
+
+/*  
 // get hotel info
 
 $sample_hotel_id = $hotels[0]['hotelId'] ;
  
 $info = $myapi->getHotelInfo( $sample_hotel_id );
- var_export( $info ); 
- 
+ var_export( $info );  */
+/*  
 // get Available Rooms information
  
   $available_rooms = $myapi->getAvailableRooms( array( 
@@ -64,5 +74,5 @@ $info = $myapi->getHotelInfo( $sample_hotel_id );
 		'options' => 'HOTEL_DETAILS , ROOM_AMENITIES'
 		));
 
-  var_export( $available_rooms ); 
+  var_export( $available_rooms );  */
  ?> 

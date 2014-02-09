@@ -56,33 +56,33 @@ require_once("../functions.php");
 						<legend>Search for a Hotel</legend>
 					 <!-- ARRIVAL -->
 						<div class="control-group">
-							<label class="control-label" for="CheckinDate">Check-in Date</label>
+							<label class="control-label" for="arrivalDate">Check-in Date</label>
 							<div class="controls">
 								<div class="input-append">
-									<input class="input-small" data-val="true" data-val-date="The field CheckinDate must be a date." data-val-required="The CheckinDate field is required." id="CheckinDate" name="CheckinDate" type="text" value="1/1/0001 12:00:00 AM" />
+									<input class="input-small" data-val="true" data-val-date="The field arrivalDate must be a date." data-val-required="The arrivalDate field is required." id="arrivalDate" name="arrivalDate" type="text" value="1/1/0001 12:00:00 AM" />
 									<span class="add-on"><i class="icon-calendar"></i></span>
 								</div>
-								<span class="field-validation-valid" data-valmsg-for="CheckinDate" data-valmsg-replace="true"></span>
+								<span class="field-validation-valid" data-valmsg-for="arrivalDate" data-valmsg-replace="true"></span>
 							</div>
 						</div>	
 				 <!-- DEPARTURE -->
 						<div class="control-group">
-							<label class="control-label" for="CheckoutDate">Check-out Date</label>
+							<label class="control-label" for="departureDate">Check-out Date</label>
 							<div class="controls">
 								<div class="input-append">
-									<input class="input-small" data-val="true" data-val-date="The field CheckoutDate must be a date." data-val-required="The CheckoutDate field is required." id="CheckoutDate" name="CheckoutDate" type="text" value="1/1/0001 12:00:00 AM" />
+									<input class="input-small" data-val="true" data-val-date="The field departureDate must be a date." data-val-required="The departureDate field is required." id="departureDate" name="departureDate" type="text" value="1/1/0001 12:00:00 AM" />
 									<span class="add-on"><i class="icon-calendar"></i></span>
 								</div>
-								<span class="field-validation-valid" data-valmsg-for="CheckoutDate" data-valmsg-replace="true"></span>
+								<span class="field-validation-valid" data-valmsg-for="departureDate" data-valmsg-replace="true"></span>
 							</div>
 						</div>
 						
 						 <!-- DESTINATION STRING -->
 						<div class="control-group">
-							<label class="control-label" for="Destination">Destination</label>
+							<label class="control-label" for="destinationString">Destination</label>
 							<div class="controls">
-								<input class="input-xlarge" data-val="true" data-val-required="The Destination field is required." id="Destination" name="Destination" placeholder="City, Province, Country" type="text" value="" />
-								<span class="field-validation-valid" data-valmsg-for="Destination" data-valmsg-replace="true"></span>
+								<input class="input-xlarge" data-val="true" data-val-required="The Destination field is required." id="destinationString" name="destinationString" placeholder="City, Province, Country" type="text" value="" />
+								<span class="field-validation-valid" data-valmsg-for="destinationString" data-valmsg-replace="true"></span>
 								<br />
 								
 							</div>
@@ -199,7 +199,7 @@ require_once("../functions.php");
                 // Dates ----------------------------------------------------------
                 // ----------------------------------------------------------------
 
-                $("input#CheckinDate").datepicker({
+                $("input#arrivalDate").datepicker({
                     changeMonth: true,
                     changeYear: true,
                     constrainInput: true,
@@ -208,12 +208,12 @@ require_once("../functions.php");
                     //dateFormat: 'dd/mm/yy',
                     onClose: function(selectedDate) {
 
-                        $("input#CheckoutDate").datepicker("option", "minDate", selectedDate);
-                        $("input#CheckoutDate").datepicker("option", "maxDate", new Date(selectedDate).addDays(30));
+                        $("input#departureDate").datepicker("option", "minDate", selectedDate);
+                        $("input#departureDate").datepicker("option", "maxDate", new Date(selectedDate).addDays(30));
                     }
                 });
 
-                $("input#CheckoutDate").datepicker({
+                $("input#departureDate").datepicker({
                     changeMonth: true,
                     changeYear: true,
                     constrainInput: true,
@@ -221,13 +221,13 @@ require_once("../functions.php");
                     minDate: 0,
                     //dateFormat: 'dd/mm/yy',
                     onClose: function(selectedDate) {
-                        $("input#CheckinDate").datepicker("option", "maxDate", selectedDate);
-                        $("input#CheckinDate").datepicker("option", "minDate", new Date(selectedDate).addDays(-30));
+                        $("input#arrivalDate").datepicker("option", "maxDate", selectedDate);
+                        $("input#arrivalDate").datepicker("option", "minDate", new Date(selectedDate).addDays(-30));
                     }
                 });
 
-                $("input#CheckinDate").datepicker("setDate", +1);
-                $("input#CheckoutDate").datepicker("setDate", +7);
+                $("input#arrivalDate").datepicker("setDate", +1);
+                $("input#departureDate").datepicker("setDate", +7);
 
 
                 // ----------------------------------------------------------------
