@@ -22,7 +22,7 @@ class Expedia
      *
      * @var int
      */
-    protected $minor_rev = 4;
+    protected $minor_rev = 99;
     /**
      * Returns data in other languages where available for Expedia Collect properties only.
      *
@@ -290,8 +290,8 @@ class Expedia
                     'minorRev' => $this->get_minor_rev(),
                     'customerSessionId' => $this->get_customer_session_id(),
                     'customerIpAddress' => $this->get_customer_ip_address(),
-                    'customerUserAgent' => $this->get_customer_user_agent(),
-                    'currencyCode' => $this->get_currency_code()
+                    'currencyCode' => $this->get_currency_code(),
+                    'customerUserAgent' => $this->get_customer_user_agent()
                 ) + $args[0];
 
             $url .= '?' . http_build_query($data);
@@ -308,7 +308,7 @@ class Expedia
         $header[] = "Accept: application/json";
         $header[] = "Accept-Encoding: gzip";
         $header[] = "Content-length: 0";
-        
+        print_r($url);
 
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
@@ -325,7 +325,7 @@ class Expedia
 		
         !rewind($verbose);
         $this->verbose_log = stream_get_contents($verbose);
-	
+		 
         $response = json_decode($result, true);
 		
         $response = current( $response );
