@@ -7,6 +7,6 @@ $currency_code = 'USD';
 $minor_rev = 99;
 $locale = 'en_US' ;
 
-// A good way to test this api is to got to API sandbox at 
+// A good way to test this api is to got to API sandbox at http://api.ean.com/api/tester/
 
 ?>
