@@ -187,11 +187,18 @@ $hotelId = $value['hotelId'];
 $name = $value['name'];
 $address1 = $value['address1'];
 $city = $value['city'];
+$stateProvinceCode = "";
+if (isset($value['stateProvinceCode'])) {
 $stateProvinceCode = $value['stateProvinceCode'];
+}
 $postalCode = $value['postalCode'];
 $countryCode = $value['countryCode'];
 $airportCode = $value['airportCode'];
+
+$supplierType = "";
+if (isset($value['supplierType'])) {
 $supplierType = $value['supplierType'];
+}
 $propertyCategory = $value['propertyCategory'];
 $hotelRating = $value['hotelRating'];
 $confidenceRating = $value['confidenceRating'];
@@ -272,13 +279,13 @@ $deepLink = $value['deepLink'];
                     </span>
                    
                     
-<p><?php 
+ <div><?php 
 //remove extra tags
 $shortDescription = str_replace("<p><b>Property Location</b> <br />","",$shortDescription);
 echo $shortDescription; 
 
-?></p>
-
+?> 
+</div>
                 </div>
   
                 <!-- Google Map -->

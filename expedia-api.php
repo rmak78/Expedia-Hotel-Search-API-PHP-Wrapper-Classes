@@ -77,7 +77,7 @@ class Expedia
      */
     protected $sig;
 
-    protected $hotel_api_url = 'api.ean.com/ean-services/rs/hotel/v3/';
+    protected $hotel_api_url = 'dev.api.ean.com/ean-services/rs/hotel/v3/';
 
     /**
      * cURL dump for last response
@@ -308,7 +308,7 @@ class Expedia
         $header[] = "Accept: application/json";
         $header[] = "Accept-Encoding: gzip";
         $header[] = "Content-length: 0";
-        print_r($url);
+       // print_r($url);
 
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
